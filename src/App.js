@@ -9,13 +9,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <br/>
           <p>
-            See The Hurricanes's projects on <a
+            The Hurricanes. See our projects on <a
               href="https://github.com/thehurricanes"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Github
+              github
             </a>
           </p>
           <div>
@@ -28,15 +29,3 @@ class App extends Component {
 }
 
 export default App;
-
-//     <h3>Latest projects</h3>
-//     <template class="latest-repos-template">
-//   <div>
-//     <h4>
-//       <a class="latest-repos-title" href=""></a>
-//       <span class="tag latest-repos-language">pure blah blah blah</span>
-//     </h4>
-//     <p class="latest-repos-description"></p>
-//   </div>
-// </template>
-// <div class="latest-repos"></div>
