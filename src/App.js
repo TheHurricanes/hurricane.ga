@@ -1,31 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.png';
-import './App.css';
-import Repos from './latestRepos';
+import React, { useState, useEffect } from 'react';
+import Repos from './repos';
+import Logo from './logo.png';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <br/>
-          <p>
-            The Hurricanes. See our projects on <a
-              href="https://github.com/thehurricanes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github
-            </a>
-          </p>
-          <div>
-            <Repos/>
-          </div>
-        </header>
-      </div>
-    );
-  }
+const API = 'https://api.github.com/orgs/thehurricanes/repos';
+
+function App() {
+  const [ repos, setRepos ] = useState([]);
+
+  useEffect(() => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((json) => setRepos(json.splice(0, 5)))
+      .catch((error) => console.log(error.message));
+  });
+
+  return (
+    <div className="app">
+      <img src={Logo} className="logo" alt="logo" />
+      <h1>The Hurricanes</h1>
+      <p>
+        See our projects on <a href="https://github.com/thehurricanes" target="_blank" rel="noopener noreferrer">github</a>
+      </p>
+
+      {repos ? <Repos repos={repos} /> : <div />}
+    </div>
+  );
 }
 
 export default App;
